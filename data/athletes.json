@@ -1,1 +1,33 @@
+{
+  "athletes": []
+}
 
+
+{
+  "athletes": [
+    {
+      "id": 1,
+      "name": "Athlete Name",
+      "country": "Cambodia",
+      "photo": "assets/images/athletes/athlete-name.jpg",
+      "gender": "male",
+      "weightClass": "upper-80kg",
+      "weight": 85,
+      "arm": "right",
+      "level": 1,
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Another Athlete",
+      "country": "Cambodia",
+      "photo": "assets/images/athletes/another-athlete.jpg",
+      "gender": "male",
+      "weightClass": "under-80kg",
+      "weight": 75,
+      "arm": "left",
+      "level": 1,
+      "active": true
+    }
+  ]
+}
