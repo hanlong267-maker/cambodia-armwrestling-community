@@ -1,1 +1,151 @@
 
+/* =================================
+   ATHLETE RANKING STYLE
+================================= */
+
+#rankings {
+    background: #10141d;
+}
+
+/* FILTERS */
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-group label {
+    display: block;
+    color: #aeb6c5;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+select {
+    width: 100%;
+    padding: 13px;
+    background: #1b2230;
+    color: white;
+    border: 1px solid #343d4d;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+select:focus {
+    border-color: #f5a623;
+}
+
+/* RANKING BOX */
+
+.ranking-box {
+    background: #171d28;
+    border: 1px solid #293244;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ranking-title {
+    padding: 20px;
+    border-bottom: 1px solid #293244;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.ranking-title h3 {
+    font-size: 19px;
+}
+
+.ranking-title span {
+    color: #f5a623;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* TABLE */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
+}
+
+th {
+    text-align: left;
+    color: #f5a623;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 20px;
+    background: #202838;
+}
+
+td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #293244;
+    color: #dce1e9;
+    font-size: 14px;
+}
+
+tbody tr {
+    transition: 0.2s;
+}
+
+tbody tr:hover {
+    background: #202838;
+}
+
+/* RANK NUMBER */
+
+.rank-number {
+    color: #f5a623;
+    font-weight: 900;
+    font-size: 17px;
+}
+
+/* ATHLETE PROFILE IN TABLE */
+
+.athlete {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: bold;
+}
+
+.athlete img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #30394a;
+}
+
+/* LEVEL BADGE */
+
+.level {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #30394a;
+    color: #f5a623;
+    font-weight: bold;
+}
+
+/* EMPTY RANKINGS */
+
+.empty-message {
+    text-align: center;
+    padding: 35px;
+    color: #aeb6c5;
+}
+
