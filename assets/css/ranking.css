@@ -7,6 +7,16 @@
     background: #10141d;
 }
 
+.athlete a {
+    color: #ffffff;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.athlete a:hover {
+    color: #f5a623;
+}
+
 /* FILTERS */
 
 .filters {
