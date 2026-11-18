@@ -1,1 +1,149 @@
 
+/* =================================
+   RESPONSIVE WEBSITE DESIGN
+================================= */
+
+/* TABLETS */
+
+@media (max-width: 992px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .filters {
+        gap: 10px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+}
+
+/* MOBILE PHONES */
+
+@media (max-width: 700px) {
+
+    /* HEADER */
+
+    .navbar {
+        flex-direction: column;
+        padding: 15px 0;
+    }
+
+    .logo {
+        font-size: 17px;
+        text-align: center;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    /* HERO */
+
+    .hero {
+        min-height: 400px;
+        background-position: center;
+    }
+
+    .hero-content {
+        padding: 60px 0;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    /* SECTIONS */
+
+    section {
+        padding: 55px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    /* RANKING FILTERS */
+
+    .filters {
+        grid-template-columns: 1fr;
+    }
+
+    .ranking-title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ranking-title h3 {
+        font-size: 16px;
+    }
+
+    /* RANKING TABLE */
+
+    table {
+        min-width: 550px;
+    }
+
+    th,
+    td {
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .athlete img {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* BUTTON */
+
+    .btn {
+        padding: 11px 20px;
+        font-size: 13px;
+    }
+
+}
+
+/* SMALL MOBILE PHONES */
+
+@media (max-width: 400px) {
+
+    .logo {
+        font-size: 15px;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+}
+
