@@ -135,13 +135,16 @@ function renderRankings() {
 
                 <td>
                     <div class="athlete">
-                        <img
-                            src="${photo}"
-                            alt="${name}"
-                            onerror="this.onerror=null;this.src='assets/images/default-athlete.png';"
-                        >
-                        ${name}
-                    </div>
+    <img
+        src="${photo}"
+        alt="${name}"
+        onerror="this.onerror=null;this.src='assets/images/default-athlete.png';"
+    >
+
+    <a href="pages/athlete-profile.html?id=${encodeURIComponent(String(athlete.id))}">
+        ${name}
+    </a>
+</div>
                 </td>
 
                 <td>${country}</td>
