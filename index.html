@@ -1,1 +1,684 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cambodia Armwrestling Community - Official athlete rankings and armwrestling community.">
+  <title>Cambodia Armwrestling Community</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0d12;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1150px, 90%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      background: #11151e;
+      border-bottom: 1px solid #252b38;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      min-height: 75px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #ffffff;
+    }
+
+    .logo span {
+      color: #f5a623;
+    }
+
+    nav {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #c5cad4;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #f5a623;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 490px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(8,10,15,.96), rgba(8,10,15,.55)),
+        url("assets/images/hero.jpg") center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      padding: 80px 0;
+    }
+
+    .hero-label {
+      color: #f5a623;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 65px);
+      line-height: 1.1;
+      margin: 18px 0;
+      font-weight: 900;
+    }
+
+    .hero h1 span {
+      color: #f5a623;
+    }
+
+    .hero p {
+      color: #c5cad4;
+      max-width: 550px;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #f5a623;
+      color: #11151e;
+      padding: 13px 25px;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .btn:hover {
+      background: #ffc45e;
+      transform: translateY(-2px);
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-heading small {
+      color: #f5a623;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      font-size: 34px;
+      margin-top: 8px;
+    }
+
+    .section-heading p {
+      color: #9ba3b3;
+      margin-top: 8px;
+    }
+
+    /* RANKING FILTERS */
+
+    #rankings {
+      background: #10141d;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .filter-group label {
+      display: block;
+      color: #aeb6c5;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    select {
+      width: 100%;
+      padding: 13px;
+      background: #1b2230;
+      color: white;
+      border: 1px solid #343d4d;
+      border-radius: 5px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    select:focus {
+      border-color: #f5a623;
+    }
+
+    /* RANKING TABLE */
+
+    .ranking-box {
+      background: #171d28;
+      border: 1px solid #293244;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .ranking-title {
+      padding: 20px;
+      border-bottom: 1px solid #293244;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .ranking-title h3 {
+      font-size: 19px;
+    }
+
+    .ranking-title span {
+      color: #f5a623;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 550px;
+    }
+
+    th {
+      text-align: left;
+      color: #f5a623;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 15px 20px;
+      background: #202838;
+    }
+
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #293244;
+      color: #dce1e9;
+      font-size: 14px;
+    }
+
+    tbody tr:hover {
+      background: #202838;
+    }
+
+    .rank-number {
+      color: #f5a623;
+      font-weight: 900;
+      font-size: 17px;
+    }
+
+    .athlete {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+    }
+
+    .athlete img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #30394a;
+    }
+
+    .level {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: #30394a;
+      color: #f5a623;
+      font-weight: bold;
+    }
+
+    .empty-message {
+      text-align: center;
+      padding: 35px;
+      color: #aeb6c5;
+    }
+
+    /* ABOUT */
+
+    #about {
+      background: #0b0d12;
+    }
+
+    .about-content {
+      max-width: 750px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-content p {
+      color: #aeb6c5;
+      margin-top: 15px;
+    }
+
+    /* CONTACT */
+
+    #contact {
+      background: #10141d;
+      text-align: center;
+    }
+
+    #contact p {
+      color: #aeb6c5;
+      margin: 10px 0 25px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #080a0e;
+      border-top: 1px solid #252b38;
+      padding: 25px 0;
+      text-align: center;
+      color: #788293;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        padding: 15px 0;
+      }
+
+      nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 400px;
+      }
+
+      .filters {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 {
+        font-size: 28px;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container navbar">
+      <a href="#" class="logo">
+        CAMBODIA <span>ARMWRESTLING</span>
+      </a>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#rankings">Rankings</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-label">Strength • Power • Competition</div>
+
+          <h1>
+            CAMBODIA<br>
+            <span>ARMWRESTLING</span><br>
+            COMMUNITY
+          </h1>
+
+          <p>
+            Bringing together Cambodia's strongest armwrestlers.
+            Discover athletes, explore official rankings and
+            follow the growth of armwrestling in Cambodia.
+          </p>
+
+          <a href="#rankings" class="btn">VIEW RANKINGS</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- RANKINGS -->
+    <section id="rankings">
+      <div class="container">
+
+        <div class="section-heading">
+          <small>Official Rankings</small>
+          <h2>ATHLETE RANKINGS</h2>
+          <p>Explore athletes by gender, weight class and arm.</p>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filters">
+
+          <div class="filter-group">
+            <label for="gender">Gender</label>
+            <select id="gender">
+              <option value="male">Men</option>
+              <option value="female">Women</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="weightClass">Weight Class</label>
+            <select id="weightClass">
+              <option value="upper-80kg">Upper 80kg</option>
+              <option value="under-80kg">Under 80kg</option>
+              <option value="under-70kg">Under 70kg</option>
+              <option value="under-60kg">Under 60kg</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="arm">Arm</label>
+            <select id="arm">
+              <option value="right">Right Arm</option>
+              <option value="left">Left Arm</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- RANKING LIST -->
+        <div class="ranking-box">
+
+          <div class="ranking-title">
+            <h3 id="rankingHeading">Men - Upper 80kg - Right Arm</h3>
+            <span id="athleteCount">0 ATHLETES</span>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Athlete</th>
+                  <th>Country</th>
+                  <th>Weight</th>
+                  <th>Level</th>
+                </tr>
+              </thead>
+
+              <tbody id="rankingList">
+                <tr>
+                  <td colspan="5" class="empty-message">
+                    Loading rankings...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container about-content">
+        <div class="section-heading">
+          <small>Who We Are</small>
+          <h2>ABOUT OUR COMMUNITY</h2>
+        </div>
+
+        <p>
+          Cambodia Armwrestling Community is dedicated to promoting
+          armwrestling, supporting athletes and developing the sport
+          throughout Cambodia.
+        </p>
+
+        <p>
+          Our goal is to build a strong community, recognize talented
+          athletes and provide a platform for fair and transparent rankings.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <small>Get In Touch</small>
+          <h2>CONTACT US</h2>
+        </div>
+
+        <p>
+          Interested in joining our community or collaborating with us?
+        </p>
+
+        <a href="mailto:info@example.com" class="btn">
+          CONTACT US
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Cambodia Armwrestling Community.
+      All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    const genderSelect = document.getElementById("gender");
+    const weightSelect = document.getElementById("weightClass");
+    const armSelect = document.getElementById("arm");
+
+    const rankingList = document.getElementById("rankingList");
+    const rankingHeading = document.getElementById("rankingHeading");
+    const athleteCount = document.getElementById("athleteCount");
+
+    let athletes = [];
+
+    const weightClassNames = {
+      "upper-80kg": "Upper 80kg",
+      "under-80kg": "Under 80kg",
+      "under-70kg": "Under 70kg",
+      "under-60kg": "Under 60kg"
+    };
+
+    // LOAD ATHLETES FROM JSON
+    async function loadAthletes() {
+      try {
+        const response = await fetch("data/athletes.json");
+
+        if (!response.ok) {
+          throw new Error("Could not load athlete data.");
+        }
+
+        const data = await response.json();
+        athletes = Array.isArray(data) ? data : data.athletes || [];
+
+        renderRankings();
+
+      } catch (error) {
+        rankingList.innerHTML = `
+          <tr>
+            <td colspan="5" class="empty-message">
+              Unable to load rankings. Please check
+              data/athletes.json.
+            </td>
+          </tr>
+        `;
+
+        console.error(error);
+      }
+    }
+
+    // FILTER AND SORT ATHLETES
+    function getRankings() {
+      return athletes
+        .filter(athlete =>
+          athlete.active === true &&
+          athlete.gender === genderSelect.value &&
+          athlete.weightClass === weightSelect.value &&
+          athlete.arm === armSelect.value
+        )
+        .sort((a, b) => Number(a.level) - Number(b.level));
+    }
+
+    // DISPLAY RANKINGS
+    function renderRankings() {
+      const gender = genderSelect.value;
+      const weightClass = weightSelect.value;
+      const arm = armSelect.value;
+
+      const results = getRankings();
+
+      const genderName = gender === "male" ? "Men" : "Women";
+      const armName = arm === "right" ? "Right Arm" : "Left Arm";
+
+      rankingHeading.textContent =
+        `${genderName} - ${weightClassNames[weightClass]} - ${armName}`;
+
+      athleteCount.textContent = `${results.length} ATHLETES`;
+
+      if (results.length === 0) {
+        rankingList.innerHTML = `
+          <tr>
+            <td colspan="5" class="empty-message">
+              No athletes found in this category.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      rankingList.innerHTML = results.map((athlete, index) => {
+        const photo = athlete.photo || "assets/images/default-athlete.png";
+        const name = escapeHTML(athlete.name || "Unknown Athlete");
+        const country = escapeHTML(athlete.country || "-");
+        const weight = athlete.weight ?? "-";
+        const level = escapeHTML(String(athlete.level ?? "-"));
+
+        return `
+          <tr>
+            <td>
+              <span class="rank-number">#${index + 1}</span>
+            </td>
+
+            <td>
+              <div class="athlete">
+                <img
+                  src="${escapeHTML(photo)}"
+                  alt="${name}"
+                  onerror="this.onerror=null;this.src='assets/images/default-athlete.png';"
+                >
+                ${name}
+              </div>
+            </td>
+
+            <td>${country}</td>
+            <td>${escapeHTML(String(weight))} kg</td>
+            <td><span class="level">${level}</span></td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    // BASIC HTML ESCAPING
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[char]);
+    }
+
+    // FILTER EVENTS
+    genderSelect.addEventListener("change", renderRankings);
+    weightSelect.addEventListener("change", renderRankings);
+    armSelect.addEventListener("change", renderRankings);
+
+    // FOOTER YEAR
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // START WEBSITE
+    loadAthletes();
+  </script>
+
+</body>
+</html>
+
